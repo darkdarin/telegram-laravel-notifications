@@ -1,0 +1,39 @@
+{
+    "name": "darkdarin/telegram-laravel-notifications",
+    "description": "Laravel Notification channel for work with Telegram Bot API",
+    "license": "MIT",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Babushkin Pavel",
+            "email": "idarksoft@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DarkDarin\\TelegramNotification\\": "src/"
+        }
+    },
+    "require": {
+        "php": "8.2.*|8.3.*",
+        "darkdarin/telegram-bot-sdk": "^0.2",
+        "illuminate/notifications": "^10.0",
+        "illuminate/support": "^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.1",
+        "roave/security-advisories": "dev-latest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DarkDarin\\TelegramNotification\\ServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
+    }
+}
