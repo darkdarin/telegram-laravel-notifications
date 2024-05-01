@@ -30,8 +30,8 @@ readonly class TelegramChannel
         if ($message->getActionUrl() !== null) {
             $keyboard = [
                 [
-                    new InlineKeyboardButton(text: $message->getActionText(), url:  $message->getActionUrl())
-                ]
+                    new InlineKeyboardButton(text: $message->getActionText(), url:  $message->getActionUrl()),
+                ],
             ];
 
             $markup = new InlineKeyboardMarkup($keyboard);

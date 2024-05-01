@@ -17,12 +17,16 @@
     "require": {
         "php": "8.2.*|8.3.*",
         "darkdarin/telegram-bot-sdk": ">=0.2",
-        "illuminate/notifications": "^10.0",
-        "illuminate/support": "^10.0"
+        "illuminate/notifications": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0"
     },
     "require-dev": {
         "laravel/pint": "^1.1",
         "roave/security-advisories": "dev-latest"
+    },
+    "scripts": {
+        "pint": "vendor/bin/pint",
+        "psalm": "vendor/bin/psalm --output-format=phpstorm --no-cache"
     },
     "extra": {
         "laravel": {
