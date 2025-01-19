@@ -2,6 +2,7 @@
 
 namespace DarkDarin\TelegramNotification;
 
+use DarkDarin\TelegramBotSdk\DTO\InlineKeyboardButton;
 use DarkDarin\TelegramBotSdk\DTO\ParseModeEnum;
 use Illuminate\Support\Facades\View;
 
@@ -13,6 +14,7 @@ class TelegramMessage
     private ParseModeEnum $parseMode = ParseModeEnum::HTML;
     private ?string $actionUrl = null;
     private ?string $actionText = null;
+    private ?array $keyboard = null;
 
     public static function create(string $text = ''): self
     {
@@ -47,6 +49,16 @@ class TelegramMessage
     {
         $this->actionUrl = $url;
         $this->actionText = $text;
+        return $this;
+    }
+
+    /**
+     * @param list<list<InlineKeyboardButton>> $keyboard
+     * @return $this
+     */
+    public function keyboard(array $keyboard): self
+    {
+        $this->keyboard = $keyboard;
         return $this;
     }
 
@@ -89,5 +101,10 @@ class TelegramMessage
     public function getActionText(): ?string
     {
         return $this->actionText;
+    }
+
+    public function getKeyboard(): ?array
+    {
+        return $this->keyboard;
     }
 }

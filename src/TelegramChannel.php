@@ -27,10 +27,12 @@ readonly class TelegramChannel
         }
 
         $markup = null;
-        if ($message->getActionUrl() !== null) {
+        if ($message->getKeyboard() !== null) {
+            $markup = new InlineKeyboardMarkup($message->getKeyboard());
+        } elseif ($message->getActionUrl() !== null) {
             $keyboard = [
                 [
-                    new InlineKeyboardButton(text: $message->getActionText(), url:  $message->getActionUrl()),
+                    new InlineKeyboardButton(text: $message->getActionText(), url: $message->getActionUrl()),
                 ],
             ];
 
@@ -39,9 +41,9 @@ readonly class TelegramChannel
 
         $this->telegram->bot($message->getBotName())
             ->sendMessage(
-                chat_id:      $message->getChatId(),
-                text:         $message->getText(),
-                parse_mode:   $message->getParseMode(),
+                chat_id: $message->getChatId(),
+                text: $message->getText(),
+                parse_mode: $message->getParseMode(),
                 reply_markup: $markup,
             );
     }
